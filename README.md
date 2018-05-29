@@ -1,2 +1,2 @@
-# cars-wallpaper
-Newest Car Wallpaper
+# Cars Wallpaper
+Newest Cars Wallpaper

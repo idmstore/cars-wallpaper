@@ -1,0 +1,81 @@
+	<ion-view view-title="Dashboard" hide-nav-bar="false" >
+		<!-- content -->
+		<ion-content delegate-handle="top" lazy-scroll  id="page-dashboard" class=" page-dashboard">
+					<!-- code search -->
+			<ion-list class="list" >
+				<div class="item item-input">
+					<i class="icon ion-search placeholder-icon"></i>
+					<input type="search" ng-model="filter_posts" placeholder="{{ 'Filter' | translate }}" aria-label="filter posts" />
+				</div>
+			</ion-list>
+			<!-- ./code search -->
+
+
+
+
+		<!-- code slide hero -->
+		<div class="assertive-900-bg slide-box-hero" ng-controller="postsCtrl">
+			<ion-slides class="slide-box-hero-content" options="{slidesPerView:1,autoplay:10000,loop:1}" slider="data.slider">
+				<ion-slide-page class="slide-box-hero-item" ng-repeat="item in data_cars_wallpapers | limitTo : 10:0" >
+					<img ng-src="{{item.x_featured_media_original}}" alt="" />
+				</ion-slide-page>
+			</ion-slides>
+		</div>
+		<!-- ./code slide hero -->
+
+
+
+		<!-- code tag hero -->
+		<a ng-href="#/cars_wallpaper/posts" class="tags-heroes-title light-bg dark">More<i class="pull-right icon ion-chevron-right"></i></a>
+		<div class="light-bg" ng-controller="postsCtrl">
+			<div class="tags-heroes-content list">
+				<div class="row">
+					<div ng-repeat="item in data_posts | limitTo:2:0" class="col" ng-class="$index ? 'col-33':'col-67'" ><a href="#/cars_wallpaper/post_singles/{{item.id}}" class="button button-small button-full ink" ng-class="{'button-assertive' : $index}">{{item.title.rendered}}</a></div>
+				</div>
+				<div class="row">
+					<div ng-repeat="item in data_posts | limitTo:2:2" class="col" ng-class="$index ? 'col-66':'col-33'" ><a href="#/cars_wallpaper/post_singles/{{item.id}}" class="button button-small button-full ink" ng-class="$index ? 'button-stable' : 'button-energized'" >{{item.title.rendered}}</a></div>
+				</div>
+				<div class="row">
+					<div ng-repeat="item in data_posts | limitTo:2:4" class="col" ng-class="$index ? 'col-33':'col-67'" ><a href="#/cars_wallpaper/post_singles/{{item.id}}" class="button button-small button-full ink" ng-class="{'button-royal' : $index}">{{item.title.rendered}}</a></div>
+				</div>
+			</div>
+		</div>
+		<!-- ./code tag hero -->
+
+
+	<div ng-controller="postsCtrl">
+			<!-- code listing -->
+			<div class="list animate-none">
+				<div class="item-thumbnail-3 card" ng-repeat="item in posts | filter:filter_posts as results" ng-init="$last ? fireEvent() : null">
+				<a class="item item-colorful item-thumbnail-left "  href="#/cars_wallpaper/post_singles/{{item.id}}">
+					<img alt="" class="full-image " image-lazy-loader="lines" image-lazy-src="{{item.x_featured_media}}"   />
+					<h3 class=""  ng-bind-html="item.title.rendered | to_trusted"></h3>
+					<div class="to_trusted" ng-bind-html="item.excerpt.rendered | limitTo:50 | to_trusted"></div>
+				<i class="icon ion-android-more-horizontal pull-right"></i>
+				</a>
+				</div>
+			</div>
+			<!-- ./code listing -->
+
+
+			<!-- code infinite scroll -->
+			<ion-list class="list">
+				<ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="onInfinite()" distance="5px" ng-if="hasMoreData"></ion-infinite-scroll>
+			</ion-list>
+			<!-- ./code infinite scroll -->
+
+
+			<!-- code search result not found -->
+			<ion-list class="list">
+				<div class="item" ng-if="results.length == 0" >
+					<p>{{ 'No results found...!' | translate }}</p>
+				</div>
+			</ion-list>
+			<!-- code search result not found -->
+
+
+	</div>
+
+		</ion-content>
+		<!-- ./content -->
+	</ion-view>

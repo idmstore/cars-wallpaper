@@ -1,0 +1,46 @@
+<ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+		<ion-nav-bar ng-show="$root.headerExists" id="navbar-right-top" class="page-title bar-dark">
+			<ion-nav-back-button></ion-nav-back-button>
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+			</ion-nav-buttons>
+			<ion-nav-buttons side="right">
+				<button class="button button-icon button-clear ion-grid" id="menu-popover" ng-click="popover.show($event)"></button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="fabButtonUp"></ion-nav-view>
+		<ion-nav-view animation="none" name="cars_wallpaper-side_menus"></ion-nav-view>
+	</ion-side-menu-content>
+	<ion-side-menu side="left">
+		<ion-header-bar class="text-center expanded dark-bg">
+			<img ng-src="{{ appLogo | trustUrl }}" class="avatar motion spin fade" />
+			<div class="menu-bottom"><span ng-bind-html="appName | strHTML"></span><br/></div>
+		</ion-header-bar>
+		<ion-content class="has-expanded-header light-bg positive-900">
+			<ion-list class="list" >
+				<ion-item  sound-touch="true"  class="menu-home item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close=""  ui-sref="cars_wallpaper.dashboard" >
+					<i class="icon ion-ios-home"></i> {{ "Home" | translate }}
+				</ion-item>
+				<ion-item  sound-touch="true"  class="menu-users item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="cars_wallpaper.users">
+					<i class="icon ion-ios-people"></i> {{ "Teams" | translate }}
+				</ion-item>
+				<ion-item  sound-touch="true"  class="menu-post_bookmark item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="cars_wallpaper.post_bookmark">
+					<i class="icon ion-android-favorite"></i> {{ "Bookmarks" | translate }}
+				</ion-item>
+				<ion-item  sound-touch="true"  class="menu-posts item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ui-sref="cars_wallpaper.posts">
+					<i class="icon ion-android-car"></i> {{ "Cars Wallpaper" | translate }}
+				</ion-item>
+				<ion-item class="item item-divider text-left" >
+					 {{ "Others" | translate }}
+				</ion-item>
+				<ion-item  sound-touch="true"  class="menu-rate_this_app item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ng-click="openURL('market://details?id=com.imabuilder.idmstorenet.carswallpaper')">
+					<i class="icon ion-android-playstore"></i> {{ "Rate" | translate }}
+				</ion-item>
+				<ion-item  sound-touch="true"  class="menu-exit item-sidebar item item-icon-left text-left dark-ink" nav-clear="" menu-close="" ng-click="exitApp()">
+					<i class="icon ion-toggle"></i> {{ "Exit" | translate }}
+				</ion-item>
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>

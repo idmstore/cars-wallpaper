@@ -1,0 +1,28 @@
+	<ion-view view-title="Menu" hide-nav-bar="false" >
+		<!-- content -->
+		<ion-content delegate-handle="top" lazy-scroll  id="page-slide_tab_menu" class=" page-slide_tab_menu">
+		
+	<div style="width: 100%;height:100%;">
+		<ion-slide-box class="ion-slide-tabs" slide-tabs-scrollable="false" show-pager="false" ion-slide-tabs>
+			<ion-slide ion-slide-tab-label="Others" >
+					<ion-content scroll="false" class="slidingTabContent">
+						<div class="list">
+							<a class="item item-icon-left" ng-click="openURL('market://details?id=com.imabuilder.idmstore.net.carswallpaper')" >
+								<i class="icon ion-android-playstore" ></i>
+								<h2>{{ "Rate" | translate }}</h2>
+								<span class="item-note pull-left">Taking a moment to rate this app?</span>
+							</a>
+							<a class="item item-icon-left"  >
+								<i class="icon ion-toggle" ></i>
+								<h2>{{ "Exit" | translate }}</h2>
+								<span class="item-note pull-left"></span>
+							</a>
+						</div>
+					</ion-content>
+			</ion-slide>
+		</ion-slide-box>
+	</div>
+
+		</ion-content>
+		<!-- ./content -->
+	</ion-view>

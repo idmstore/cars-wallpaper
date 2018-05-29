@@ -1,0 +1,56 @@
+	<ion-view view-title="{{ post.title.rendered }}" hide-nav-bar="false" >
+		<!-- content -->
+		<ion-content delegate-handle="top" lazy-scroll scroll="true"   id="page-post_singles" class="page-post_singles">
+		
+			<ion-refresher pulling-text="Pull to refresh..."  on-refresh="doRefresh()"></ion-refresher>
+			<div class="list ">
+
+					<!-- heading-1 -->
+					<div class="item item-divider"  ng-bind-html="post.title.rendered | to_trusted">{{post.title.rendered}}</div>
+					<!-- ./heading-1 -->
+
+					<!-- to_trusted -->
+					<div class="item item-text-wrap noborder to_trusted {{ fontsize }}" ng-bind-html="post.content.rendered | strHTML"></div>
+					<!-- ./to_trusted -->
+
+					<!-- share_link -->
+					<div class="item">
+						<button run-social-sharing message="{{ post.link }}" class="button button-small ion-android-share-alt button-outline button-positive icon-left">Share Link</button>
+					</div>
+					<!-- ./share_link -->
+
+					<!-- slidebox -->
+					<div class="item item-text-wrap noborder to_trusted">
+					<div class="slideshow_container to_trusted" ng-if="post.x_metadata.slider" >
+							<ion-slides options="{slidesPerView:1}" slider="data.slider" class="slideshow">
+								<ion-slide-page class="slideshow-item" ng-repeat="slide_item in post.x_metadata.slider | strExplode:'|' track by $index" >
+									<div class="item-text-wrap" ng-bind-html="slide_item | to_trusted"></div>
+								</ion-slide-page>
+							</ion-slides>
+					</div>
+					</div>
+					<!-- ./slidebox -->
+
+					<!-- slidebox -->
+					<div class="item item-text-wrap noborder to_trusted">
+					<div class="slideshow_container to_trusted" ng-if="post.slide" >
+							<ion-slides options="{slidesPerView:1}" slider="data.slider" class="slideshow">
+								<ion-slide-page class="slideshow-item" ng-repeat="slide_item in post.slide | strExplode:'|' track by $index" >
+									<div class="item-text-wrap" ng-bind-html="slide_item | to_trusted"></div>
+								</ion-slide-page>
+							</ion-slides>
+					</div>
+					</div>
+					<!-- ./slidebox -->
+			</div>
+			<div class="list">
+				<div class="item tabs tabs-secondary tabs-icon-left tabs-stable">
+					<a class="tab-item" ng-click="addToDbVirtual(post);"><i class="icon ion-android-add-circle"></i> {{ 'Add To Bookmark' | translate }}</a>
+					<a class="tab-item" ng-href="#/cars_wallpaper/post_bookmark"><i class="icon ion-ios-star"></i> {{ 'Bookmark' | translate }}</a>
+				</div>
+			</div>
+			<br/><br/><br/>
+
+		</ion-content>
+		<!-- ./content -->
+	</ion-view>
